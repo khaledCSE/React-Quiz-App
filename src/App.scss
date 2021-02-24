@@ -1,0 +1,87 @@
+@mixin myShadow {
+    border: 2px solid gray;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba($color: gray, $alpha: 0.5);
+}
+
+body {
+    #root {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .card {
+            padding: 30px;
+            height: 300px;
+            width: 700px;
+
+            @include myShadow();
+
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 60px);
+            grid-template-areas:
+                'q a1'
+                'q a2'
+                'q a3'
+                'q a4';
+            .a1,
+            .a2,
+            .a3,
+            .a4 {
+                @include myShadow();
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+            }
+            .question {
+                grid-area: q;
+                padding-right: 10px;
+                // border-right: 2px solid gray;
+            }
+            .a1 {
+                grid-area: a1;
+            }
+            .a2 {
+                grid-area: a2;
+            }
+            .a3 {
+                grid-area: a3;
+            }
+            .a4 {
+                grid-area: a4;
+            }
+        }
+        .result {
+            padding: 30px;
+            height: 300px;
+            width: 600px;
+
+            @include myShadow();
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .reset {
+                @include myShadow();
+                font-size: 25px;
+                color: white;
+                background: green;
+                padding: 15px 30px;
+                outline: none;
+                cursor: pointer;
+
+                &:hover {
+                    background: white;
+                    color: green;
+                }
+            }
+        }
+    }
+}
